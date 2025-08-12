@@ -1,70 +1,93 @@
-/* Reset and base */
+/*
+ * APPORIUM Store styles
+ * Basado en Material Design para una experiencia tipo Play Store.
+ */
+
+:root {
+  --primary-color: #0d47a1;
+  --primary-light: #1976d2;
+  --secondary-bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --text-color: #212121;
+  --subtitle-color: #666666;
+  --border-radius: 8px;
+  --header-height: 64px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
+html, body {
+  height: 100%;
+}
+
+body {
   font-family: 'Roboto', sans-serif;
-  background-color: var(--background-color);
+  background-color: var(--secondary-bg);
   color: var(--text-color);
+  line-height: 1.5;
 }
 
-/* CSS Variables for theming */
-:root {
-  --primary-color: #005fc6; /* Marca azul intensa inspirada en Play Store */
-  --secondary-color: #006bff; /* Color de acento para hover y estados activos */
-  --accent-color: #03dac5; /* Tono menta para logotipo y detalles */
-  --background-color: #f5f5f5;
-  --surface-color: #ffffff;
-  --text-color: #212121;
-  --muted-color: #757575;
-  --drawer-width: 260px;
-}
-
-/* Top App Bar */
-.top-app-bar {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
+/* App bar */
+.app-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
   background-color: var(--primary-color);
   color: white;
-  position: sticky;
-  top: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
   z-index: 1000;
 }
 
-.top-app-bar .menu-btn,
-.top-app-bar .back-btn {
+.app-bar .menu-btn {
   font-size: 1.5rem;
   background: none;
   border: none;
-  color: inherit;
+  color: white;
   cursor: pointer;
   margin-right: 1rem;
 }
 
-.top-app-bar .brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-right: auto;
+.app-bar .brand {
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: white;
+  margin-right: 1rem;
 }
 
-.brand-icon {
+.app-bar .brand-logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 0.5rem;
+}
+
+.app-bar .brand-name {
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-right: 0.2rem;
-  color: var(--accent-color);
 }
 
-.top-app-bar input[type="search"] {
+.app-bar .search-input {
   flex: 1;
-  padding: 0.5rem;
-  border-radius: 4px;
+  max-width: 480px;
+  height: 36px;
+  border-radius: 18px;
   border: none;
-  max-width: 400px;
+  padding: 0 1rem;
+  font-size: 1rem;
+  outline: none;
+  color: var(--text-color);
+}
+
+.app-bar .search-input::placeholder {
+  color: #ffffffcc;
 }
 
 /* Drawer */
@@ -72,215 +95,298 @@ html {
   position: fixed;
   top: 0;
   left: 0;
-  width: var(--drawer-width);
+  width: 280px;
   height: 100%;
-  background-color: var(--surface-color);
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  overflow-y: auto;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  z-index: 1200;
-  overflow-y: auto;
+  z-index: 999;
 }
 
 .drawer.open {
   transform: translateX(0);
 }
 
-.drawer nav ul {
-  list-style: none;
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem;
+  background-color: var(--primary-light);
+  color: white;
 }
 
-.drawer nav ul li {
+.drawer-header .drawer-title {
+  font-weight: 500;
+}
+
+.drawer-header .close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+.drawer-section {
+  list-style: none;
+  padding: 1rem;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.drawer-section .section-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
-.drawer nav ul li.section-label {
-  margin-top: 1rem;
-  font-weight: bold;
-  color: var(--muted-color);
+.drawer-section li {
+  margin-bottom: 0.5rem;
 }
 
-.drawer nav ul li a {
+.drawer-section li a {
   text-decoration: none;
   color: var(--text-color);
-  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
   display: block;
+  padding: 0.25rem 0;
   border-radius: 4px;
 }
 
-.drawer nav ul li a:hover {
-  background-color: var(--background-color);
+.drawer-section li a:hover {
+  background-color: #f0f0f0;
 }
 
-/* Main content area */
-#content,
-.content {
-  padding: 1rem;
-  margin-left: 0;
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 998;
 }
 
-@media (min-width: 768px) {
-  #content,
-  .content {
-    margin-left: var(--drawer-width);
-  }
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-/* Hero section */
-.hero {
-  background-color: var(--surface-color);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  margin-bottom: 2rem;
-  text-align: center;
+/* Main content adjustments for header */
+main {
+  padding: calc(var(--header-height) + 1rem) 1rem 2rem;
 }
 
-.hero h2 {
-  margin-bottom: 0.5rem;
+.page-title {
   font-size: 1.75rem;
-}
-
-.hero p {
-  color: var(--muted-color);
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 /* Sections */
-.app-section,
-.product-section {
+.content-section {
   margin-bottom: 2rem;
 }
 
-.app-section h3,
-.product-section h3 {
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
 }
 
-/* Card grid layout */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+/* Horizontal card rows */
+.card-row {
+  display: flex;
+  overflow-x: auto;
   gap: 1rem;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
 }
 
-.app-card,
-.product-card {
-  background-color: var(--surface-color);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+.card {
+  flex: 0 0 200px;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   overflow: hidden;
-  transition: transform 0.2s;
+  scroll-snap-align: start;
 }
 
-.app-card:hover,
-.product-card:hover {
-  transform: translateY(-4px);
+.card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
-.app-card img,
-.product-card img {
+.card-thumb {
   width: 100%;
   height: 120px;
   object-fit: cover;
 }
 
-.app-info,
-.product-info {
+.card-content {
   padding: 0.5rem;
 }
 
-.app-info h4,
-.product-info h4 {
+.card-title {
   font-size: 1rem;
-  margin-bottom: 0.3rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
 }
 
-.rating {
+.card-subtitle {
   font-size: 0.875rem;
-  color: var(--muted-color);
+  color: var(--subtitle-color);
 }
 
-.price {
-  font-size: 0.9rem;
+.card-rating {
+  font-size: 0.875rem;
   color: var(--primary-color);
-  font-weight: 500;
+  margin-top: 0.25rem;
 }
 
-/* App detail page */
+/* Grid for listing pages */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.item-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.item-thumb {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.item-info {
+  padding: 0.5rem;
+}
+
+.item-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.item-subtitle {
+  font-size: 0.875rem;
+  color: var(--subtitle-color);
+}
+
+/* App/Product detail pages */
 .app-hero {
   display: flex;
-  flex-direction: column;
-  background-color: var(--surface-color);
-  padding: 1rem;
-  border-radius: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   margin-bottom: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.app-hero img {
-  width: 100%;
+.app-thumbnail {
+  width: 200px;
   height: 200px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
 }
 
-.app-hero-info {
-  margin-top: 1rem;
+.app-summary {
+  flex: 1;
+  min-width: 250px;
 }
 
-.app-hero-info h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.3rem;
+.app-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
 }
 
-.btn-primary {
+.app-category, .app-price {
+  font-size: 1rem;
+  color: var(--subtitle-color);
+  margin-bottom: 0.5rem;
+}
+
+.app-rating {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.cta-btn {
   background-color: var(--primary-color);
   color: white;
   border: none;
-  padding: 0.75rem 1.25rem;
-  border-radius: 4px;
+  border-radius: 20px;
+  padding: 0.5rem 1.5rem;
   font-size: 1rem;
   cursor: pointer;
-  margin-top: 0.5rem;
+  transition: background-color 0.2s ease;
 }
 
-.btn-primary:hover {
-  background-color: var(--secondary-color);
+.cta-btn:hover {
+  background-color: var(--primary-light);
 }
 
-.description,
-.whats-new,
-.details {
-  background-color: var(--surface-color);
+.app-section {
+  margin-bottom: 1.5rem;
+  background-color: var(--card-bg);
   padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.description h3,
-.whats-new h3,
-.details h3 {
+.details-list {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.details-list li {
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  position: relative;
 }
 
-.description p {
-  color: var(--muted-color);
+.details-list li::before {
+  content: '\2022';
+  position: absolute;
+  left: -1rem;
+  color: var(--primary-color);
 }
 
-.whats-new ul,
-.details ul {
-  margin-left: 1rem;
-  list-style: disc;
-  color: var(--muted-color);
-}
-
-footer {
+/* Footer */
+.footer {
   text-align: center;
-  padding: 1rem;
-  color: var(--muted-color);
-  background-color: transparent;
+  padding: 2rem 1rem;
+  font-size: 0.875rem;
+  color: var(--subtitle-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .app-thumbnail {
+    width: 100%;
+    height: auto;
+  }
 }
