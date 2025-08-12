@@ -1,81 +1,286 @@
-/* Estilos para la tienda PlanificaPro */
-
-body {
-  font-family: Arial, sans-serif;
+/* Reset and base */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
-  color: #333;
 }
 
-header {
-  background-color: #ffffff;
-  text-align: center;
-  padding: 40px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+html {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
+/* CSS Variables for theming */
+:root {
+  --primary-color: #005fc6; /* Marca azul intensa inspirada en Play Store */
+  --secondary-color: #006bff; /* Color de acento para hover y estados activos */
+  --accent-color: #03dac5; /* Tono menta para logotipo y detalles */
+  --background-color: #f5f5f5;
+  --surface-color: #ffffff;
+  --text-color: #212121;
+  --muted-color: #757575;
+  --drawer-width: 260px;
 }
 
-header p {
-  margin: 10px 0 0;
-  font-size: 1.1rem;
-  color: #666;
+/* Top App Bar */
+.top-app-bar {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.product {
-  background-color: #ffffff;
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.product-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.product h2 {
-  margin-top: 0;
+.top-app-bar .menu-btn,
+.top-app-bar .back-btn {
   font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.top-app-bar .brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.brand-icon {
+  font-weight: 700;
+  margin-right: 0.2rem;
+  color: var(--accent-color);
+}
+
+.top-app-bar input[type="search"] {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  max-width: 400px;
+}
+
+/* Drawer */
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--drawer-width);
+  height: 100%;
+  background-color: var(--surface-color);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1200;
+  overflow-y: auto;
+}
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+.drawer nav ul {
+  list-style: none;
+  padding: 1rem;
+}
+
+.drawer nav ul li {
+  margin-bottom: 0.5rem;
+}
+
+.drawer nav ul li.section-label {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: var(--muted-color);
+}
+
+.drawer nav ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 0.5rem 0.75rem;
+  display: block;
+  border-radius: 4px;
+}
+
+.drawer nav ul li a:hover {
+  background-color: var(--background-color);
+}
+
+/* Main content area */
+#content,
+.content {
+  padding: 1rem;
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #content,
+  .content {
+    margin-left: var(--drawer-width);
+  }
+}
+
+/* Hero section */
+.hero {
+  background-color: var(--surface-color);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.hero h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+}
+
+.hero p {
+  color: var(--muted-color);
+}
+
+/* Sections */
+.app-section,
+.product-section {
+  margin-bottom: 2rem;
+}
+
+.app-section h3,
+.product-section h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+/* Card grid layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.app-card,
+.product-card {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.app-card:hover,
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.app-card img,
+.product-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.app-info,
+.product-info {
+  padding: 0.5rem;
+}
+
+.app-info h4,
+.product-info h4 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.rating {
+  font-size: 0.875rem;
+  color: var(--muted-color);
 }
 
 .price {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 20px 0;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 500;
 }
 
-/* Enlaces de descarga */
-.download-btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #0070f3;
-  color: #ffffff;
-  text-decoration: none;
+/* App detail page */
+.app-hero {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-color);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.app-hero img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.app-hero-info {
+  margin-top: 1rem;
+}
+
+.app-hero-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
   border-radius: 4px;
   font-size: 1rem;
-  font-weight: bold;
-  transition: background-color 0.2s ease;
+  cursor: pointer;
+  margin-top: 0.5rem;
 }
 
-.download-btn:hover {
-  background-color: #0055aa;
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+
+.description,
+.whats-new,
+.details {
+  background-color: var(--surface-color);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.description h3,
+.whats-new h3,
+.details h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.description p {
+  color: var(--muted-color);
+}
+
+.whats-new ul,
+.details ul {
+  margin-left: 1rem;
+  list-style: disc;
+  color: var(--muted-color);
 }
 
 footer {
-  background-color: #ffffff;
   text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-  color: #666;
-  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  color: var(--muted-color);
+  background-color: transparent;
 }

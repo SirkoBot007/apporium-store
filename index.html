@@ -1,40 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>APPORIUM - Mercado de Productos Digitales</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APPORIUM - Tu mercado de apps IA y productos digitales</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header>
-    <h1>APPORIUM</h1>
-    <p>Mercado de productos digitales y aplicaciones de IA de alta calidad y gran demanda.</p>
+  <!-- Top App Bar -->
+  <header class="top-app-bar">
+    <button id="menuBtn" class="menu-btn" aria-label="Abrir menú">☰</button>
+    <h1 class="brand"><span class="brand-icon">A</span>PPORIUM</h1>
+    <input type="search" id="search" placeholder="Buscar apps y productos..." aria-label="Buscar" />
   </header>
-  <main>
-    <section class="product">
-      <img src="planner-cover.jpg" alt="Planificador digital de autocuidado" class="product-image">
-      <h2>Planificador digital de autocuidado&nbsp;2026</h2>
-      <p>Un planificador de autocuidado con calendarios mensuales y espacios para notas. Ideal para organizar tu año&nbsp;2026, con diseño minimalista y funcional.</p>
-      <p class="price">Precio: €9.00</p>
-      <!-- Botón de PayPal: actualiza el valor 'business' con tu correo de PayPal -->
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="TU-CORREO-PAYPAL@example.com">
-        <input type="hidden" name="item_name" value="Planificador digital de autocuidado 2026">
-        <input type="hidden" name="amount" value="9.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="button_subtype" value="services">
-        <input type="hidden" name="no_note" value="1">
-        <!-- Ajuste el dominio después de implementar en Vercel: usamos rutas relativas para simplificar -->
-        <input type="hidden" name="return" value="/download.html">
-        <input type="hidden" name="cancel_return" value="/">
-        <input type="image" src="https://www.paypalobjects.com/webstatic/es_ES/i/btn/png/btn_paynow_92x26.png" border="0" name="submit" alt="Comprar ahora con PayPal">
-      </form>
+
+  <!-- Lateral navigation drawer -->
+  <aside id="drawer" class="drawer">
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li class="section-label">Apps IA</li>
+        <li><a href="#productivity">Productividad</a></li>
+        <li><a href="#creativity">Creatividad</a></li>
+        <li><a href="#photovideo">Foto/Video</a></li>
+        <li><a href="#devtools">DevTools</a></li>
+        <li><a href="#finance">Finanzas</a></li>
+        <li><a href="#education">Educación</a></li>
+        <li><a href="#health">Salud</a></li>
+        <li><a href="#travel">Viajes</a></li>
+        <li><a href="#music">Música</a></li>
+        <li><a href="#utilities">Utilidades</a></li>
+        <li><a href="#games">Juegos</a></li>
+        <li class="section-label">Productos Digitales</li>
+        <li><a href="digital.html">Ebooks &amp; Cursos</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main id="content">
+    <section class="hero">
+      <h2>Descubre las mejores aplicaciones de inteligencia artificial</h2>
+      <p>Explora cientos de apps gratuitas y premium para potenciar tu productividad, creatividad y entretenimiento.</p>
     </section>
+
+    <section id="top-charts" class="app-section">
+      <h3>Top IA Apps</h3>
+      <div class="card-grid">
+        <div class="app-card">
+          <a href="app.html"><img src="https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" alt="App IA" /></a>
+          <div class="app-info">
+            <h4>BrainBoost</h4>
+            <p class="rating">★ 4.8 • Gratis</p>
+          </div>
+        </div>
+        <div class="app-card">
+          <a href="app.html"><img src="https://images.pexels.com/photos/3771033/pexels-photo-3771033.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" alt="App IA" /></a>
+          <div class="app-info">
+            <h4>Artify AI</h4>
+            <p class="rating">★ 4.6 • €2,99</p>
+          </div>
+        </div>
+        <div class="app-card">
+          <a href="app.html"><img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" alt="App IA" /></a>
+          <div class="app-info">
+            <h4>Finance GPT</h4>
+            <p class="rating">★ 4.7 • Suscripción</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="digital-products" class="product-section">
+      <h3>Productos digitales</h3>
+      <div class="card-grid">
+        <div class="product-card">
+          <a href="digital.html"><img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" alt="ebook" /></a>
+          <div class="product-info">
+            <h4>Curso de IA para Principiantes</h4>
+            <p class="price">€29,00</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <a href="digital.html"><img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" alt="ebook" /></a>
+          <div class="product-info">
+            <h4>Ebook: Productividad Extrema</h4>
+            <p class="price">€9,99</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <a href="digital.html"><img src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" alt="plantillas" /></a>
+          <div class="product-info">
+            <h4>Plantillas Notion IA</h4>
+            <p class="price">€5,00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>&copy; 2025 APPORIUM. Todos los derechos reservados.</p>
+    </footer>
   </main>
-  <footer>
-    <p>© 2025 APPORIUM. Todos los derechos reservados.</p>
-  </footer>
+
+  <script>
+    // Lógica simple para abrir y cerrar el menú lateral
+    const menuBtn = document.getElementById('menuBtn');
+    const drawer = document.getElementById('drawer');
+    menuBtn.addEventListener('click', () => {
+      drawer.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
