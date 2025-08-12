@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APPORIUM - Mercado de Productos Digitales</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>APPORIUM</h1>
+    <p>Mercado de productos digitales y aplicaciones de IA de alta calidad y gran demanda.</p>
+  </header>
+  <main>
+    <section class="product">
+      <img src="planner-cover.jpg" alt="Planificador digital de autocuidado" class="product-image">
+      <h2>Planificador digital de autocuidado&nbsp;2026</h2>
+      <p>Un planificador de autocuidado con calendarios mensuales y espacios para notas. Ideal para organizar tu año&nbsp;2026, con diseño minimalista y funcional.</p>
+      <p class="price">Precio: €9.00</p>
+      <!-- Botón de PayPal: actualiza el valor 'business' con tu correo de PayPal -->
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="TU-CORREO-PAYPAL@example.com">
+        <input type="hidden" name="item_name" value="Planificador digital de autocuidado 2026">
+        <input type="hidden" name="amount" value="9.00">
+        <input type="hidden" name="currency_code" value="EUR">
+        <input type="hidden" name="button_subtype" value="services">
+        <input type="hidden" name="no_note" value="1">
+        <!-- Ajuste el dominio después de implementar en Vercel: usamos rutas relativas para simplificar -->
+        <input type="hidden" name="return" value="/download.html">
+        <input type="hidden" name="cancel_return" value="/">
+        <input type="image" src="https://www.paypalobjects.com/webstatic/es_ES/i/btn/png/btn_paynow_92x26.png" border="0" name="submit" alt="Comprar ahora con PayPal">
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 APPORIUM. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
